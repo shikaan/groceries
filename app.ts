@@ -5,32 +5,6 @@ type ListItem = {
 
 type List = Record<string, ListItem[]>;
 
-const LIST = `
-0:Vegetables
-1:Dairy
-2:Meat & Fish
-3:cans
-4:Other
-
-0,1,Cetrioli
-0,0,Pomodori
-0,1,Peperoni
-0,0,Cipolle
-0,0,Aglio
-1,0,Burro
-1,0,Sahne
-1,0,Creme Fraîche
-1,1,Ziegenkäse
-1,0,Emmentaler
-1,0,Eggs
-1,0,Back-Camembert
-2,0,Schinken
-2,0,Schnitxel
-2,0,Fisch
-3,0,Ceci
-4,0,Saltz
-`.trim();
-
 const state = new Proxy<{ list: List }>(
   {
     list: {},
