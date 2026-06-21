@@ -75,14 +75,25 @@ function render() {
 
   $main.innerHTML = "";
 
+  const $topbar = document.createElement("header");
+  $topbar.classList.add("topbar");
+
+  const $title = document.createElement("h1");
+  $title.classList.add("title");
+  $title.innerText = "🥦 Groceries";
+
   const $hideTicked = document.createElement("button");
   $hideTicked.classList.add("hide-ticked");
+  $hideTicked.classList.toggle("active", hideTicked);
   $hideTicked.innerText = hideTicked ? "Show ticked" : "Hide ticked";
   $hideTicked.addEventListener("click", () => {
     hideTicked = !hideTicked;
     render();
   });
-  $main.append($hideTicked);
+
+  $topbar.append($title);
+  $topbar.append($hideTicked);
+  $main.append($topbar);
 
   for (const [category, items] of Object.entries(list)) {
     const $section = document.createElement("section");
@@ -110,6 +121,7 @@ function render() {
     const visibleItems = hideTicked ? items.filter((i) => !i.checked) : items;
     visibleItems.forEach((i) => {
       const $listItem = document.createElement("li");
+      $listItem.classList.toggle("checked", i.checked);
 
       const $name = document.createElement("span");
       $name.innerText = i.name;
