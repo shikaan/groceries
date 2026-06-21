@@ -178,7 +178,13 @@ section {
   display: flex;
   flex-direction: column;
 
+  .section-head {
+    display: flex;
+    align-items: center;
+  }
+
   h3.name {
+    flex: 1;
     padding: 8px 12px;
     font-size: 1.1rem;
     font-weight: 700;
@@ -253,6 +259,32 @@ section {
     }
   }
 
+  /* Drag handles for reordering */
+  .drag-handle {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap);
+    height: var(--tap);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  /* Element currently being dragged */
+  .dragging {
+    opacity: 0.6;
+  }
+
   button.add-item {
     margin-top: 4px;
     border: 0;
@@ -269,6 +301,18 @@ section {
       background: var(--surface-hover);
     }
   }
+}
+
+section.dragging {
+  opacity: 0.6;
+}
+
+/* Line marking where a dragged item/category will drop */
+.drop-indicator {
+  height: 3px;
+  background: var(--accent);
+  border-radius: var(--radius);
+  pointer-events: none;
 }
 
 button.add-category {
