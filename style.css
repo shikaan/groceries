@@ -113,6 +113,11 @@ html {
   background: var(--bg);
 }
 
+/* While dragging, stop the browser's pull-to-refresh from firing */
+html.dragging {
+  overscroll-behavior-y: contain;
+}
+
 body {
   min-height: 100dvh;
   background: var(--bg);

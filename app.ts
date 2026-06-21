@@ -91,6 +91,7 @@ function enableDrag(
     if (e.pointerType === "mouse" && e.button !== 0) return;
     e.preventDefault();
     node.classList.add("dragging");
+    document.documentElement.classList.add("dragging");
     let moved = false;
 
     // A line that marks where the dragged element will land.
@@ -116,6 +117,7 @@ function enableDrag(
       window.removeEventListener("pointerup", up);
       window.removeEventListener("pointercancel", up);
       node.classList.remove("dragging");
+      document.documentElement.classList.remove("dragging");
       if (moved) container.insertBefore(node, indicator);
       indicator.remove();
       if (moved) onDrop();
