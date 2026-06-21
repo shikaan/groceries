@@ -3,6 +3,7 @@
     "vite": "^7.3.1"
   },
   "scripts": {
-    "build": "vite build --outDir docs"
+    "build": "vite build --outDir docs",
+    "start": "vite preview --outDir docs"
   }
 }

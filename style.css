@@ -91,6 +91,13 @@ main {
     padding: 0.5rem;
     margin-top: 2rem;
   }
+
+  button.hide-ticked {
+    border: none;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    align-self: flex-end;
+  }
 }
 
 section {

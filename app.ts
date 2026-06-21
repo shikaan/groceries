@@ -68,10 +68,22 @@ function encode(list: List): string {
 
 const $main = document.getElementsByTagName("main")[0];
 
+let hideTicked = false;
+
 function render() {
   const list = state.list;
 
   $main.innerHTML = "";
+
+  const $hideTicked = document.createElement("button");
+  $hideTicked.classList.add("hide-ticked");
+  $hideTicked.innerText = hideTicked ? "Show ticked" : "Hide ticked";
+  $hideTicked.addEventListener("click", () => {
+    hideTicked = !hideTicked;
+    render();
+  });
+  $main.append($hideTicked);
+
   for (const [category, items] of Object.entries(list)) {
     const $section = document.createElement("section");
 
@@ -95,7 +107,8 @@ function render() {
     });
 
     const $list = document.createElement("ul");
-    items.forEach((i) => {
+    const visibleItems = hideTicked ? items.filter((i) => !i.checked) : items;
+    visibleItems.forEach((i) => {
       const $listItem = document.createElement("li");
 
       const $name = document.createElement("span");
